@@ -1,0 +1,5 @@
+node_modules
+tmp
+assets/dist/
+**/*_templ.go
+.env

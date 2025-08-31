@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    "tmp": true,
+    "node_modules": true,
+    "**/.git": true,
+    "**/*_templ.go": true
+  },
+  "search.exclude": {
+    "node_modules/*": true,
+    "**/.git": true,
+    "**/*_templ.go": true
+  }
+}
