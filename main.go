@@ -11,6 +11,7 @@ import (
 
 	assetsfs "github.com/Chadi-Mangle/templ-hmr-setup/assets"
 	"github.com/Chadi-Mangle/templ-hmr-setup/internal/config"
+	"github.com/Chadi-Mangle/templ-hmr-setup/internal/handlers"
 	"github.com/Chadi-Mangle/templ-hmr-setup/internal/models"
 	"github.com/Chadi-Mangle/templ-hmr-setup/templates"
 )
@@ -45,15 +46,13 @@ func main() {
 
 	queries := models.New(conn)
 
-	Users, _ := queries.ListUsers(ctx)
-
-	for _, user := range Users {
-		fmt.Printf("%v", user)
-	}
+	handler := handlers.NewHandler(ctx, *queries)
 
 	// Web :
 	component := templates.Hello("World !")
 	http.Handle("/", templ.Handler(component))
+
+	http.HandleFunc("/login", handler.SignIn)
 
 	serverAddr := cfg.GetServerAddress()
 	fmt.Printf("Listening on %s\n", serverAddr)
