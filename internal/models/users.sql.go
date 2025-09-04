@@ -10,37 +10,44 @@ import (
 )
 
 const createUser = `-- name: CreateUser :one
-INSERT INTO users (first_name, last_name, has_paid, bungalow_id) VALUES ($1, $2, $3, $4)
-RETURNING id, first_name, last_name, has_paid, bungalow_id
+INSERT INTO users (first_name, last_name, hash_password, is_activated, has_paid, is_admin) VALUES ($1, $2, $3, $4, $5, $6)
+RETURNING id, first_name, last_name, hash_password, is_activated, has_paid, is_admin, bungalow_id
 `
 
 type CreateUserParams struct {
-	FirstName  string `db:"first_name" json:"first_name"`
-	LastName   string `db:"last_name" json:"last_name"`
-	HasPaid    bool   `db:"has_paid" json:"has_paid"`
-	BungalowID int32  `db:"bungalow_id" json:"bungalow_id"`
+	FirstName    string `db:"first_name" json:"first_name"`
+	LastName     string `db:"last_name" json:"last_name"`
+	HashPassword string `db:"hash_password" json:"hash_password"`
+	IsActivated  bool   `db:"is_activated" json:"is_activated"`
+	HasPaid      bool   `db:"has_paid" json:"has_paid"`
+	IsAdmin      bool   `db:"is_admin" json:"is_admin"`
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, error) {
 	row := q.db.QueryRow(ctx, createUser,
 		arg.FirstName,
 		arg.LastName,
+		arg.HashPassword,
+		arg.IsActivated,
 		arg.HasPaid,
-		arg.BungalowID,
+		arg.IsAdmin,
 	)
 	var i User
 	err := row.Scan(
 		&i.ID,
 		&i.FirstName,
 		&i.LastName,
+		&i.HashPassword,
+		&i.IsActivated,
 		&i.HasPaid,
+		&i.IsAdmin,
 		&i.BungalowID,
 	)
 	return i, err
 }
 
 const getUserByName = `-- name: GetUserByName :one
-SELECT id, first_name, last_name, has_paid, bungalow_id FROM users WHERE first_name = $1 AND last_name = $2
+SELECT id, first_name, last_name, hash_password, is_activated, has_paid, is_admin, bungalow_id FROM users WHERE first_name = $1 AND last_name = $2
 `
 
 type GetUserByNameParams struct {
@@ -55,14 +62,33 @@ func (q *Queries) GetUserByName(ctx context.Context, arg GetUserByNameParams) (U
 		&i.ID,
 		&i.FirstName,
 		&i.LastName,
+		&i.HashPassword,
+		&i.IsActivated,
 		&i.HasPaid,
+		&i.IsAdmin,
 		&i.BungalowID,
 	)
 	return i, err
 }
 
+const getUserPasswordByName = `-- name: GetUserPasswordByName :one
+SELECT hash_password FROM users WHERE first_name = $1 AND last_name = $2
+`
+
+type GetUserPasswordByNameParams struct {
+	FirstName string `db:"first_name" json:"first_name"`
+	LastName  string `db:"last_name" json:"last_name"`
+}
+
+func (q *Queries) GetUserPasswordByName(ctx context.Context, arg GetUserPasswordByNameParams) (string, error) {
+	row := q.db.QueryRow(ctx, getUserPasswordByName, arg.FirstName, arg.LastName)
+	var hash_password string
+	err := row.Scan(&hash_password)
+	return hash_password, err
+}
+
 const listUsers = `-- name: ListUsers :many
-SELECT id, first_name, last_name, has_paid, bungalow_id FROM users ORDER BY last_name, first_name
+SELECT id, first_name, last_name, hash_password, is_activated, has_paid, is_admin, bungalow_id FROM users ORDER BY last_name, first_name
 `
 
 func (q *Queries) ListUsers(ctx context.Context) ([]User, error) {
@@ -78,7 +104,10 @@ func (q *Queries) ListUsers(ctx context.Context) ([]User, error) {
 			&i.ID,
 			&i.FirstName,
 			&i.LastName,
+			&i.HashPassword,
+			&i.IsActivated,
 			&i.HasPaid,
+			&i.IsAdmin,
 			&i.BungalowID,
 		); err != nil {
 			return nil, err
@@ -91,9 +120,61 @@ func (q *Queries) ListUsers(ctx context.Context) ([]User, error) {
 	return items, nil
 }
 
+const setUserPaid = `-- name: SetUserPaid :one
+UPDATE users SET has_paid = $1 WHERE id = $2
+RETURNING id, first_name, last_name, hash_password, is_activated, has_paid, is_admin, bungalow_id
+`
+
+type SetUserPaidParams struct {
+	HasPaid bool  `db:"has_paid" json:"has_paid"`
+	ID      int32 `db:"id" json:"id"`
+}
+
+func (q *Queries) SetUserPaid(ctx context.Context, arg SetUserPaidParams) (User, error) {
+	row := q.db.QueryRow(ctx, setUserPaid, arg.HasPaid, arg.ID)
+	var i User
+	err := row.Scan(
+		&i.ID,
+		&i.FirstName,
+		&i.LastName,
+		&i.HashPassword,
+		&i.IsActivated,
+		&i.HasPaid,
+		&i.IsAdmin,
+		&i.BungalowID,
+	)
+	return i, err
+}
+
+const setUserPassword = `-- name: SetUserPassword :one
+UPDATE users SET hash_password = $1 WHERE id = $2
+RETURNING id, first_name, last_name, hash_password, is_activated, has_paid, is_admin, bungalow_id
+`
+
+type SetUserPasswordParams struct {
+	HashPassword string `db:"hash_password" json:"hash_password"`
+	ID           int32  `db:"id" json:"id"`
+}
+
+func (q *Queries) SetUserPassword(ctx context.Context, arg SetUserPasswordParams) (User, error) {
+	row := q.db.QueryRow(ctx, setUserPassword, arg.HashPassword, arg.ID)
+	var i User
+	err := row.Scan(
+		&i.ID,
+		&i.FirstName,
+		&i.LastName,
+		&i.HashPassword,
+		&i.IsActivated,
+		&i.HasPaid,
+		&i.IsAdmin,
+		&i.BungalowID,
+	)
+	return i, err
+}
+
 const setUserReservations = `-- name: SetUserReservations :one
 UPDATE users SET bungalow_id = $1 WHERE id = $2
-RETURNING id, first_name, last_name, has_paid, bungalow_id
+RETURNING id, first_name, last_name, hash_password, is_activated, has_paid, is_admin, bungalow_id
 `
 
 type SetUserReservationsParams struct {
@@ -108,7 +189,10 @@ func (q *Queries) SetUserReservations(ctx context.Context, arg SetUserReservatio
 		&i.ID,
 		&i.FirstName,
 		&i.LastName,
+		&i.HashPassword,
+		&i.IsActivated,
 		&i.HasPaid,
+		&i.IsAdmin,
 		&i.BungalowID,
 	)
 	return i, err

@@ -16,9 +16,12 @@ type BungalowsUser struct {
 }
 
 type User struct {
-	ID         int32  `db:"id" json:"id"`
-	FirstName  string `db:"first_name" json:"first_name"`
-	LastName   string `db:"last_name" json:"last_name"`
-	HasPaid    bool   `db:"has_paid" json:"has_paid"`
-	BungalowID int32  `db:"bungalow_id" json:"bungalow_id"`
+	ID           int32  `db:"id" json:"id"`
+	FirstName    string `db:"first_name" json:"first_name"`
+	LastName     string `db:"last_name" json:"last_name"`
+	HashPassword string `db:"hash_password" json:"hash_password"`
+	IsActivated  bool   `db:"is_activated" json:"is_activated"`
+	HasPaid      bool   `db:"has_paid" json:"has_paid"`
+	IsAdmin      bool   `db:"is_admin" json:"is_admin"`
+	BungalowID   int32  `db:"bungalow_id" json:"bungalow_id"`
 }

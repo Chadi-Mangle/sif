@@ -7,10 +7,15 @@ templ layout(title string) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{ title }</title>
+        <script src="https://cdn.jsdelivr.net/npm/unpoly@3.11.0/unpoly.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/unpoly@3.11.0/unpoly.min.css">
         <link rel="stylesheet" href="/assets/dist/style.css" />
+        <link rel="stylesheet" href="/assets/dist/unpoly-change.css" />
     </head>
     <body>
-        { children... }
+        <div class="w-full h-screen bg-gradient-to-br from-gray-50 to-blue-100">
+            { children... }
+        </div>
     </body>
     </html>
 }

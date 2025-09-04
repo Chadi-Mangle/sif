@@ -4,7 +4,10 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
+    hash_password TEXT NOT NULL,
+    is_activated BOOLEAN NOT NULL,
     has_paid BOOLEAN NOT NULL,
+    is_admin BOOLEAN NOT NULL,
     bungalow_id INTEGER REFERENCES bungalows(id),
     UNIQUE (first_name, last_name)
 );

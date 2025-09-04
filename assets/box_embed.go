@@ -4,7 +4,7 @@ package assetsfs
 
 import "embed"
 
-//go:embed dist/*
+//go:embed dist/*.css
 var ebox embed.FS
 
 func init() {

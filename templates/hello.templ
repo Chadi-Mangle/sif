@@ -1,9 +1,21 @@
 package templates
 
 templ Hello(name string) {
-    @layout("👋 Hello World!") {
+    @layout("Hello World!") {
+
         <div class="p-6">
-            <h1 class="text-3xl text-purple-500">Hello, { name }</h1>
+            <h1 class="text-3xl text-blue-500">Hellooo, { name }</h1>
         </div>
+        <a 
+        href="/login"
+        class="text-gray-300 hover:text-indigo-400 transition-colors"
+        >
+        <!--
+        up-layer="new"
+        up-size="small"
+        >
+        -->
+            Se connecter
+        </a>
     }
 }

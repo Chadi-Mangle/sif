@@ -52,7 +52,11 @@ func main() {
 	component := templates.Hello("World !")
 	http.Handle("/", templ.Handler(component))
 
-	http.HandleFunc("/login", handler.SignIn)
+	http.HandleFunc("GET /login", handler.GetSignIn)
+	http.HandleFunc("POST /login", handler.PostSignIn)
+
+	http.HandleFunc("GET /register", handler.GetSignUp)
+	http.HandleFunc("POST /register", handler.PostSingUp)
 
 	serverAddr := cfg.GetServerAddress()
 	fmt.Printf("Listening on %s\n", serverAddr)
