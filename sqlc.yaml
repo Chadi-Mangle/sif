@@ -15,7 +15,7 @@ sql:
             go_type: 
               type: "User"
               slice: true
-          - db_type: "pg_catalog.int4"
-            nullable: true
+          - column: "users.bungalow_id"
             go_type:
-              type:  "int32"
+              type: "NullInt32"
+              import: "database/sql"

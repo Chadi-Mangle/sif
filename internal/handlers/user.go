@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -20,10 +19,10 @@ func (h *Handler) PostSingUp(w http.ResponseWriter, r *http.Request) {
 	lastName := r.FormValue("last_name")
 
 	password := r.FormValue("password")
-
 	hashedPassword, errPassword := utils.HashPassword(password)
 	if errPassword != nil {
-		return //Erreur lors de l'encodage du mot de passe
+		fmt.Printf("password %v", errPassword)
+		return // Erreur lors de l'encodage du mot de passe
 	}
 
 	createUser := models.CreateUserParams{
@@ -36,13 +35,15 @@ func (h *Handler) PostSingUp(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Faire une logique d'envoie de mail sur l'adresse académique pour
-	// que les gens hors de l'ecole ne puisse pas s'inscirire
+	// que les gens hors de l'ecole ne puisse pas s'inscrire
 
 	_, errUser := h.queries.CreateUser(h.ctx, createUser)
 	if errUser != nil {
-		return //Erreur lors de la création de l'utilisateur
+		fmt.Printf("%v", errUser)
+		return // Erreur lors de la création de l'utilisateur
 	}
 
+	fmt.Printf("Utilisateur créé\n")
 }
 
 func (h *Handler) GetSignIn(w http.ResponseWriter, r *http.Request) {
@@ -61,6 +62,7 @@ func (h *Handler) PostSignIn(w http.ResponseWriter, r *http.Request) {
 
 	hashedPassword, errUser := h.queries.GetUserPasswordByName(h.ctx, user)
 	if errUser != nil {
+		fmt.Printf("Erreur pour trouver le mdp : %v", errUser)
 		// Voir de faire un goto pour handler les erreurs en html
 		return // User not fond en gros
 	}
@@ -69,17 +71,9 @@ func (h *Handler) PostSignIn(w http.ResponseWriter, r *http.Request) {
 
 	errPassword := utils.CheckPassword(password, hashedPassword)
 	if errPassword != nil {
+		fmt.Printf("%v", errPassword)
 		return // Mauvais mot de passe
 	}
 
-	fmt.Printf("%s %s connecté", firstName, lastName)
-}
-
-func (h *Handler) CreateUser(w http.ResponseWriter, r *http.Request) {
-	var createUser models.CreateUserParams
-	if err := json.NewDecoder(r.Body).Decode(&createUser); err != nil {
-		http.Error(w, "error decoding request body", http.StatusBadRequest)
-		return
-	}
-
+	fmt.Printf("%s %s est connecté", firstName, lastName)
 }

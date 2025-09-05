@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"database/sql"
 )
 
 const createUser = `-- name: CreateUser :one
@@ -178,8 +179,8 @@ RETURNING id, first_name, last_name, hash_password, is_activated, has_paid, is_a
 `
 
 type SetUserReservationsParams struct {
-	BungalowID int32 `db:"bungalow_id" json:"bungalow_id"`
-	ID         int32 `db:"id" json:"id"`
+	BungalowID sql.NullInt32 `db:"bungalow_id" json:"bungalow_id"`
+	ID         int32         `db:"id" json:"id"`
 }
 
 func (q *Queries) SetUserReservations(ctx context.Context, arg SetUserReservationsParams) (User, error) {

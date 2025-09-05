@@ -46,6 +46,12 @@ func main() {
 
 	queries := models.New(conn)
 
+	users, _ := queries.ListUsers(ctx)
+
+	for i, user := range users {
+		fmt.Printf("User%d : %v\n\n", i, user)
+	}
+
 	handler := handlers.NewHandler(ctx, *queries)
 
 	// Web :

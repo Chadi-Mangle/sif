@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"database/sql"
 )
 
 const createBungalow = `-- name: CreateBungalow :one
@@ -37,7 +38,7 @@ const getBungalowNbReservations = `-- name: GetBungalowNbReservations :one
 SELECT COUNT(users.id) FROM users WHERE users.bungalow_id = $1
 `
 
-func (q *Queries) GetBungalowNbReservations(ctx context.Context, bungalowID int32) (int64, error) {
+func (q *Queries) GetBungalowNbReservations(ctx context.Context, bungalowID sql.NullInt32) (int64, error) {
 	row := q.db.QueryRow(ctx, getBungalowNbReservations, bungalowID)
 	var count int64
 	err := row.Scan(&count)
