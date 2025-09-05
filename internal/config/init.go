@@ -24,16 +24,18 @@ type Config struct {
 }
 
 type ServerConfig struct {
-	Host string
-	Port string
+	Host      string
+	Port      string
+	SecretKey string
 }
 
 func LoadConfig() (*Config, error) {
 	cfg := &Config{
 		Env: getEnvOrDefault("ENV", "development"),
 		Server: ServerConfig{
-			Host: getEnvOrDefault("SERVER_HOST", "localhost"),
-			Port: getEnvOrDefault("HTTP_PORT", "3000"),
+			Host:      getEnvOrDefault("SERVER_HOST", "localhost"),
+			Port:      getEnvOrDefault("HTTP_PORT", "3000"),
+			SecretKey: getEnvOrDefault("SECRET_KEY", "default_secret_key"),
 		},
 		DB: PostgresConfig{
 			Username: getEnvOrDefault("POSTGRES_USER", "postgres"),

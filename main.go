@@ -52,7 +52,7 @@ func main() {
 		fmt.Printf("User%d : %v\n\n", i, user)
 	}
 
-	handler := handlers.NewHandler(ctx, *queries)
+	handler := handlers.NewHandler(ctx, *queries, cfg.Server.SecretKey)
 
 	// Web :
 	component := templates.Hello("World !")

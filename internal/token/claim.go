@@ -4,6 +4,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/Chadi-Mangle/templ-hmr-setup/internal/utils"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
 )
@@ -14,7 +15,7 @@ type UserClaims struct {
 	jwt.RegisteredClaims
 }
 
-func NewUserClaims(firstName string, LastName string, duration time.Duration) (*UserClaims, error) {
+func NewUserClaims(firstName string, lastName string, duration time.Duration) (*UserClaims, error) {
 	tokenID, err := uuid.NewRandom()
 	if err != nil {
 		return nil, errors.New("Erreur lors de la création du token ID")
@@ -24,9 +25,11 @@ func NewUserClaims(firstName string, LastName string, duration time.Duration) (*
 		FirstName: firstName,
 		LastName:  lastName,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ID: tokenID,
-			Subject: ,
+			ID:        tokenID.String(),
+			Subject:   utils.GetEmailAddress(firstName, lastName),
+			IssuedAt:  jwt.NewNumericDate(time.Now()),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(duration)),
 		},
-	}
+	}, nil
 
 }

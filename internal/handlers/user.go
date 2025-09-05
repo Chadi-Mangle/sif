@@ -60,20 +60,27 @@ func (h *Handler) PostSignIn(w http.ResponseWriter, r *http.Request) {
 		LastName:  lastName,
 	}
 
-	hashedPassword, errUser := h.queries.GetUserPasswordByName(h.ctx, user)
-	if errUser != nil {
-		fmt.Printf("Erreur pour trouver le mdp : %v", errUser)
+	hashedPassword, err := h.queries.GetUserPasswordByName(h.ctx, user)
+	if err != nil {
+		fmt.Printf("Erreur pour trouver le mdp : %v", err)
 		// Voir de faire un goto pour handler les erreurs en html
 		return // User not fond en gros
 	}
 
 	password := r.FormValue("password")
 
-	errPassword := utils.CheckPassword(password, hashedPassword)
-	if errPassword != nil {
-		fmt.Printf("%v", errPassword)
+	err = utils.CheckPassword(password, hashedPassword)
+	if err != nil {
+		fmt.Printf("%v", err)
 		return // Mauvais mot de passe
 	}
 
 	fmt.Printf("%s %s est connecté", firstName, lastName)
+
+	// accessToken, _, err := h.token.CreateToken(firstName, lastName, 15*time.Minute)
+	// if err != nil {
+	// 	return // Erreur lors de la création du token
+	// }
+
+	// http.SetCookie()
 }
