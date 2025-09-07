@@ -6,6 +6,8 @@ package models
 
 import (
 	"database/sql"
+
+	"github.com/jackc/pgx/v5/pgtype"
 )
 
 type Bungalow struct {
@@ -17,6 +19,16 @@ type BungalowsUser struct {
 	ID       int32  `db:"id" json:"id"`
 	Capacity int32  `db:"capacity" json:"capacity"`
 	Users    []User `db:"users" json:"users"`
+}
+
+type RefreshToken struct {
+	ID        string           `db:"id" json:"id"`
+	FirstName string           `db:"first_name" json:"first_name"`
+	LastName  string           `db:"last_name" json:"last_name"`
+	IsRevoked pgtype.Bool      `db:"is_revoked" json:"is_revoked"`
+	Token     string           `db:"token" json:"token"`
+	ExpiresAt pgtype.Timestamp `db:"expires_at" json:"expires_at"`
+	CreatedAt pgtype.Timestamp `db:"created_at" json:"created_at"`
 }
 
 type User struct {

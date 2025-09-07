@@ -12,18 +12,20 @@ import (
 type UserClaims struct {
 	FirstName string `db:"first_name" json:"first_name"`
 	LastName  string `db:"last_name" json:"last_name"`
+	IsAdmin   bool   `db:"is_admin" json:"is_admin"`
 	jwt.RegisteredClaims
 }
 
-func NewUserClaims(firstName string, lastName string, duration time.Duration) (*UserClaims, error) {
+func NewUserClaims(firstName string, lastName string, isAdmin bool, duration time.Duration) (*UserClaims, error) {
 	tokenID, err := uuid.NewRandom()
 	if err != nil {
-		return nil, errors.New("Erreur lors de la création du token ID")
+		return nil, errors.New("erreur lors de la création du token ID")
 	}
 
 	return &UserClaims{
 		FirstName: firstName,
 		LastName:  lastName,
+		IsAdmin:   isAdmin,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ID:        tokenID.String(),
 			Subject:   utils.GetEmailAddress(firstName, lastName),
