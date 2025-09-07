@@ -1,0 +1,157 @@
+package templates
+
+templ Payment() {
+    @layout("Paiement - SIF") {
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="w-full h-full bg-gradient-to-r from-blue-50/30 to-indigo-50/30"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="relative bg-white/95 backdrop-blur-md shadow-2xl border-b border-white/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-8">
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur-lg opacity-75"></div>
+                            <div class="relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl mr-6 shadow-2xl">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-4xl font-bold text-gray-900 mb-2">Paiement SIF</h1>
+                            <p class="text-lg text-gray-600 font-medium">Finalisez votre inscription</p>
+                        </div>
+                    </div>
+                    <a href="/dashboard" class="group relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-gray-700 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-white hover:border-blue-300 transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                        <svg class="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Retour au profil
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <!-- Welcome Section -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl mb-8 shadow-2xl">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                    </svg>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Finalisez votre
+                    <span class="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                        inscription
+                    </span>
+                </h2>
+                <p class="text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
+                    Effectuez le paiement pour accéder à tous les services SIF.
+                </p>
+            </div>
+
+            <!-- Payment Card -->
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-12 shadow-2xl border border-white/30">
+                <div class="text-center">
+                    <!-- Amount Display -->
+                    <div class="mb-12">
+                        <div class="inline-flex items-center justify-center w-32 h-32 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-8 shadow-2xl">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-white">80€</div>
+                                <div class="text-sm text-green-100">TTC</div>
+                            </div>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Frais d'inscription SIF</h3>
+                        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                            Paiement unique pour l'accès complet à la plateforme de réservation de bungalows SIF.
+                        </p>
+                    </div>
+
+                    <!-- Payment Features -->
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border-2 border-blue-100">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Sécurisé</h4>
+                            <p class="text-gray-600">Paiement 100% sécurisé via Stripe</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-100">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Instantané</h4>
+                            <p class="text-gray-600">Accès immédiat après paiement</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-6 border-2 border-purple-100">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Garantie</h4>
+                            <p class="text-gray-600">Satisfaction garantie ou remboursé</p>
+                        </div>
+                    </div>
+
+                    <!-- Stripe Payment Button -->
+                    <div class="space-y-6">
+                        <button 
+                            id="stripe-payment-button"
+                            class="group relative inline-flex items-center justify-center px-12 py-5 text-xl font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 w-full max-w-md mx-auto"
+                        >
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="relative flex items-center">
+                                <svg class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                                </svg>
+                                Payer 80€ avec Stripe
+                            </div>
+                        </button>
+                        
+                        <p class="text-sm text-gray-500 max-w-md mx-auto">
+                            En cliquant sur "Payer", vous acceptez nos conditions d'utilisation et notre politique de confidentialité.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="relative mt-20 pt-8 border-t border-gray-200">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-gray-500 text-sm">
+                    © 2025 SIF - Système de Réservation du SIF. Tous droits réservés.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Stripe Integration Script -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Note: En production, vous devrez remplacer 'pk_test_...' par votre vraie clé publique Stripe
+            const stripe = Stripe('pk_test_your_stripe_public_key_here');
+            
+            document.getElementById('stripe-payment-button').addEventListener('click', function() {
+                // Ici, vous devrez créer une session de paiement côté serveur
+                // Pour l'instant, on simule un clic
+                alert('Fonctionnalité de paiement Stripe à implémenter côté serveur');
+            });
+        });
+    </script>
+    }
+}
