@@ -64,6 +64,18 @@ func main() {
 	http.HandleFunc("GET /register", handler.GetSignUp)
 	http.HandleFunc("POST /register", handler.PostSingUp)
 
+	// Route temporaire pour le dashboard
+	http.HandleFunc("GET /dashboard", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.Dashboard()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	// Route pour la page de paiement
+	http.HandleFunc("GET /payment", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.Payment()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
 	serverAddr := cfg.GetServerAddress()
 	fmt.Printf("Listening on %s\n", serverAddr)
 	http.ListenAndServe(":"+cfg.Server.Port, nil)

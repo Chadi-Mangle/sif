@@ -2,18 +2,30 @@ package templates
 
 templ layout(title string) {
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{ title }</title>
+        <meta name="description" content="Système de réservation de bungalows SIF - Réservez votre séjour dans un cadre exceptionnel">
         <script src="https://cdn.jsdelivr.net/npm/unpoly@3.11.0/unpoly.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/unpoly@3.11.0/unpoly.min.css">
         <link rel="stylesheet" href="/assets/dist/style.css" />
         <link rel="stylesheet" href="/assets/dist/unpoly-change.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            body { font-family: 'Inter', sans-serif; }
+        </style>
     </head>
-    <body>
-        <div class="w-full h-screen bg-gradient-to-br from-gray-50 to-blue-100">
+    <body class="antialiased">
+        <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-40">
+                <div class="w-full h-full bg-gradient-to-r from-blue-50/20 to-indigo-50/20"></div>
+            </div>
+            
             { children... }
         </div>
     </body>

@@ -3,7 +3,7 @@ package templates
 templ Login() {
     @layout("Login") {
     <div class="h-screen flex items-center justify-center">
-      <div up-main up-dismissable up-modal="true" class="w-full max-w-lg">
+      <div class="w-full max-w-lg">
         <div class="w-full max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
             <h2 class="text-2xl font-bold text-center text-gray-700 mb-6">Connexion</h2>
             
@@ -11,7 +11,6 @@ templ Login() {
             action="/login" 
             method="post"
             class="space-y-6"
-            up-submit
             >
             
             <div class="flex space-x-4">
