@@ -78,8 +78,8 @@ func (h *JWTHandler) generateRefreshToken() (string, error) {
 
 func (h *JWTHandler) VerifyToken(tokenString string) (*UserClaims, error) {
 	token, err := jwt.ParseWithClaims(tokenString, &UserClaims{}, func(t *jwt.Token) (any, error) {
-		_, isTrue := t.Method.(*jwt.SigningMethodHMAC)
-		if !isTrue {
+		_, ok := t.Method.(*jwt.SigningMethodHMAC)
+		if !ok {
 			return nil, errors.New("mauvaise méthode d'encryption")
 		}
 
@@ -90,10 +90,33 @@ func (h *JWTHandler) VerifyToken(tokenString string) (*UserClaims, error) {
 		return nil, errors.New("erreur dans le token")
 	}
 
-	claims, isTrue := token.Claims.(*UserClaims)
-	if !isTrue {
+	claims, ok := token.Claims.(*UserClaims)
+	if !ok {
 		return nil, errors.New("erreur avec les claims token")
 	}
 
 	return claims, nil
+}
+
+func (h *JWTHandler) ReadTokenClaims(tokenString string) (*UserClaims, error) {
+	token, _, err := new(jwt.Parser).ParseUnverified(tokenString, &UserClaims{})
+	if err != nil {
+		return nil, err
+	}
+
+	claims, ok := token.Claims.(*UserClaims)
+	if !ok {
+		return nil, errors.New("impossible de lire les claims")
+	}
+
+	return claims, nil
+}
+
+func (h *JWTHandler) IsTokenExpired(tokenString string) bool {
+	claims, err := h.ReadTokenClaims(tokenString)
+	if err != nil {
+		return true
+	}
+
+	return time.Now().After(claims.ExpiresAt.Time)
 }

@@ -105,7 +105,7 @@
     #RESET
   \*-----------------------------------*/
   
-  *,
+  /* *,
   *::before,
   *::after {
     margin: 0;
@@ -113,9 +113,9 @@
     box-sizing: border-box;
   }
   
-  li { list-style: none; }
+  li { list-style: none; } */
   
-  a,
+  /* a,
   img,
   span,
   input,
@@ -1261,4 +1261,4 @@
   
     .feature-list { grid-template-columns: 1fr 1fr; }
   
-  }
+  } */

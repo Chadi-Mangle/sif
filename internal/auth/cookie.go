@@ -10,24 +10,22 @@ const (
 )
 
 func SetAuthCookies(w http.ResponseWriter, accessToken, refreshToken string) {
-	// Cookie pour l'access token (httpOnly, sécurisé, courte durée)
 	http.SetCookie(w, &http.Cookie{
 		Name:     AccessTokenCookie,
 		Value:    accessToken,
 		Path:     "/",
 		HttpOnly: true,
-		Secure:   false, // true en production avec HTTPS
+		//Secure:   false, // true en production avec HTTPS
 		SameSite: http.SameSiteStrictMode,
 		MaxAge:   15 * 60, // 15 minutes
 	})
 
-	// Cookie pour le refresh token (httpOnly, sécurisé, longue durée)
 	http.SetCookie(w, &http.Cookie{
-		Name:     RefreshTokenCookie,
-		Value:    refreshToken,
-		Path:     "/auth/refresh", // Limité au endpoint de refresh
+		Name:  RefreshTokenCookie,
+		Value: refreshToken,
+		//Path:     "/auth/refresh",
 		HttpOnly: true,
-		Secure:   false, // true en production avec HTTPS
+		//Secure:   false, // true en production avec HTTPS
 		SameSite: http.SameSiteStrictMode,
 		MaxAge:   7 * 24 * 60 * 60, // 7 jours
 	})
@@ -59,9 +57,9 @@ func ClearAuthCookies(w http.ResponseWriter) {
 	})
 
 	http.SetCookie(w, &http.Cookie{
-		Name:     RefreshTokenCookie,
-		Value:    "",
-		Path:     "/auth/refresh",
+		Name:  RefreshTokenCookie,
+		Value: "",
+		// Path:     "/auth/refresh",
 		HttpOnly: true,
 		MaxAge:   -1,
 	})
