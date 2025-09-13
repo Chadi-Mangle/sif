@@ -66,7 +66,7 @@ func main() {
 
 	// Route temporaire pour le dashboard
 	http.HandleFunc("GET /dashboard", func(w http.ResponseWriter, r *http.Request) {
-		component := templates.Dashboard()
+		component := templates.Dashboard("John", "Doe", false)
 		templ.Handler(component).ServeHTTP(w, r)
 	})
 
