@@ -128,6 +128,11 @@ func main() {
 		templ.Handler(component).ServeHTTP(w, r)
 	})
 
+	// Routes d'administration
+	http.HandleFunc("GET /admin", handler.GetAdmin)
+	http.HandleFunc("POST /admin/toggle-payment/", handler.ToggleUserPayment)
+	http.HandleFunc("POST /admin/mark-all-paid", handler.MarkAllAsPaid)
+
 	serverAddr := cfg.GetServerAddress()
 	fmt.Printf("Listening on %s\n", serverAddr)
 	http.ListenAndServe(":"+cfg.Server.Port, nil)

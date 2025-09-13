@@ -1,9 +1,12 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 
+	"github.com/Chadi-Mangle/templ-hmr-setup/internal/auth"
 	"github.com/Chadi-Mangle/templ-hmr-setup/internal/models"
 	"github.com/Chadi-Mangle/templ-hmr-setup/package/utils"
 	"github.com/Chadi-Mangle/templ-hmr-setup/templates"
@@ -83,4 +86,156 @@ func (h *Handler) PostSignIn(w http.ResponseWriter, r *http.Request) {
 	// }
 
 	// http.SetCookie()
+}
+
+// GetAdmin affiche la page d'administration avec la liste de tous les membres
+func (h *Handler) GetAdmin(w http.ResponseWriter, r *http.Request) {
+	// Vérifier que l'utilisateur est connecté et est admin
+	accessToken, err := auth.GetAccessToken(r)
+	if err != nil {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+
+	// Vérifier et décoder le token
+	claims, err := h.token.VerifyToken(accessToken)
+	if err != nil {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
+
+	// Vérifier que l'utilisateur est admin
+	if !claims.IsAdmin {
+		http.Error(w, "Accès refusé. Droits administrateur requis.", http.StatusForbidden)
+		return
+	}
+
+	// Récupérer tous les utilisateurs
+	users, err := h.queries.ListUsers(h.ctx)
+	if err != nil {
+		http.Error(w, "Erreur lors de la récupération des utilisateurs", http.StatusInternalServerError)
+		return
+	}
+
+	// Rendu du template admin
+	component := templates.Admin(users)
+	component.Render(r.Context(), w)
+}
+
+// ToggleUserPayment bascule le statut de paiement d'un utilisateur
+func (h *Handler) ToggleUserPayment(w http.ResponseWriter, r *http.Request) {
+	// Vérifier que l'utilisateur est connecté et est admin
+	accessToken, err := auth.GetAccessToken(r)
+	if err != nil {
+		http.Error(w, "Non autorisé", http.StatusUnauthorized)
+		return
+	}
+
+	claims, err := h.token.VerifyToken(accessToken)
+	if err != nil {
+		http.Error(w, "Token invalide", http.StatusUnauthorized)
+		return
+	}
+
+	if !claims.IsAdmin {
+		http.Error(w, "Accès refusé. Droits administrateur requis.", http.StatusForbidden)
+		return
+	}
+
+	// Récupérer l'ID de l'utilisateur depuis l'URL
+	userIDStr := r.URL.Path[len("/admin/toggle-payment/"):]
+	userID, err := strconv.Atoi(userIDStr)
+	if err != nil {
+		http.Error(w, "ID utilisateur invalide", http.StatusBadRequest)
+		return
+	}
+
+	// Récupérer tous les utilisateurs et trouver celui avec l'ID correspondant
+	users, err := h.queries.ListUsers(h.ctx)
+	if err != nil {
+		http.Error(w, "Erreur lors de la récupération des utilisateurs", http.StatusInternalServerError)
+		return
+	}
+
+	var targetUser *models.User
+	for _, u := range users {
+		if u.ID == int32(userID) {
+			targetUser = &u
+			break
+		}
+	}
+
+	if targetUser == nil {
+		http.Error(w, "Utilisateur non trouvé", http.StatusNotFound)
+		return
+	}
+
+	// Basculer le statut de paiement
+	newStatus := !targetUser.HasPaid
+	_, err = h.queries.SetUserPaid(h.ctx, models.SetUserPaidParams{
+		HasPaid: newStatus,
+		ID:      int32(userID),
+	})
+	if err != nil {
+		http.Error(w, "Erreur lors de la mise à jour du statut", http.StatusInternalServerError)
+		return
+	}
+
+	// Retourner une réponse JSON
+	response := map[string]interface{}{
+		"success": true,
+		"message": "Statut de paiement mis à jour avec succès",
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// MarkAllAsPaid marque tous les utilisateurs comme ayant payé
+func (h *Handler) MarkAllAsPaid(w http.ResponseWriter, r *http.Request) {
+	// Vérifier que l'utilisateur est connecté et est admin
+	accessToken, err := auth.GetAccessToken(r)
+	if err != nil {
+		http.Error(w, "Non autorisé", http.StatusUnauthorized)
+		return
+	}
+
+	claims, err := h.token.VerifyToken(accessToken)
+	if err != nil {
+		http.Error(w, "Token invalide", http.StatusUnauthorized)
+		return
+	}
+
+	if !claims.IsAdmin {
+		http.Error(w, "Accès refusé. Droits administrateur requis.", http.StatusForbidden)
+		return
+	}
+
+	// Récupérer tous les utilisateurs
+	users, err := h.queries.ListUsers(h.ctx)
+	if err != nil {
+		http.Error(w, "Erreur lors de la récupération des utilisateurs", http.StatusInternalServerError)
+		return
+	}
+
+	// Marquer tous les utilisateurs comme ayant payé
+	for _, user := range users {
+		if !user.HasPaid {
+			_, err := h.queries.SetUserPaid(h.ctx, models.SetUserPaidParams{
+				HasPaid: true,
+				ID:      user.ID,
+			})
+			if err != nil {
+				http.Error(w, "Erreur lors de la mise à jour des statuts", http.StatusInternalServerError)
+				return
+			}
+		}
+	}
+
+	// Retourner une réponse JSON
+	response := map[string]interface{}{
+		"success": true,
+		"message": "Tous les utilisateurs ont été marqués comme ayant payé",
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
 }
