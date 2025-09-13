@@ -253,11 +253,17 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
 
                         <!-- Grille des bungalows -->
                         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-10 gap-3">
-                            <div class="bungalow-card group bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="1">
-                                <div class="text-center">
-                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
-                                        <span class="text-white font-bold text-sm">1</span>
-                                    </div>
+                    <div class="bungalow-card group bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="1">
+                        <!-- Icône de validation -->
+                        <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
+                                <span class="text-white font-bold text-sm">1</span>
+                            </div>
                                     <h4 class="font-bold text-gray-900 text-sm mb-1">Bungalow 1</h4>
                                     <div class="space-y-1">
                                         <div class="flex justify-between text-xs">
@@ -291,7 +297,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-3 border-2 border-green-200 hover:border-green-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="2">
+                            <div class="bungalow-card group bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-3 border-2 border-green-200 hover:border-green-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="2">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">2</span>
@@ -337,7 +349,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-purple-50 to-violet-50 rounded-lg p-3 border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="3">
+                            <div class="bungalow-card group bg-gradient-to-br from-purple-50 to-violet-50 rounded-lg p-3 border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="3">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-violet-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">3</span>
@@ -368,7 +386,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-orange-50 to-amber-50 rounded-lg p-3 border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="4">
+                            <div class="bungalow-card group bg-gradient-to-br from-orange-50 to-amber-50 rounded-lg p-3 border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="4">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">4</span>
@@ -408,7 +432,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-pink-50 to-rose-50 rounded-lg p-3 border-2 border-pink-200 hover:border-pink-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="5">
+                            <div class="bungalow-card group bg-gradient-to-br from-pink-50 to-rose-50 rounded-lg p-3 border-2 border-pink-200 hover:border-pink-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="5">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">5</span>
@@ -436,7 +466,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-cyan-50 to-teal-50 rounded-lg p-3 border-2 border-cyan-200 hover:border-cyan-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="6">
+                            <div class="bungalow-card group bg-gradient-to-br from-cyan-50 to-teal-50 rounded-lg p-3 border-2 border-cyan-200 hover:border-cyan-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="6">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">6</span>
@@ -479,7 +515,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-3 border-2 border-indigo-200 hover:border-indigo-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="7">
+                            <div class="bungalow-card group bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-3 border-2 border-indigo-200 hover:border-indigo-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="7">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">7</span>
@@ -513,7 +555,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-red-50 to-pink-50 rounded-lg p-3 border-2 border-red-200 hover:border-red-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="8">
+                            <div class="bungalow-card group bg-gradient-to-br from-red-50 to-pink-50 rounded-lg p-3 border-2 border-red-200 hover:border-red-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="8">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">8</span>
@@ -538,7 +586,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg p-3 border-2 border-yellow-200 hover:border-yellow-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="9">
+                            <div class="bungalow-card group bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg p-3 border-2 border-yellow-200 hover:border-yellow-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="9">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">9</span>
@@ -558,7 +612,13 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
-                            <div class="bungalow-card group bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300 cursor-pointer hover:shadow-lg" data-bungalow="10">
+                            <div class="bungalow-card group bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-3 border-2 border-gray-200 hover:border-gray-400 transition-all duration-300 cursor-pointer hover:shadow-lg relative" data-bungalow="10">
+                                <!-- Icône de validation -->
+                                <div class="check-icon hidden absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
                                 <div class="text-center">
                                     <div class="w-8 h-8 bg-gradient-to-r from-gray-500 to-slate-500 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-200">
                                         <span class="text-white font-bold text-sm">10</span>
@@ -695,16 +755,26 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
             function toggleBungalowMembers(bungalowNumber) {
                 // Retirer la sélection précédente
                 bungalowCards.forEach(card => {
-                    card.classList.remove('ring-4', 'ring-blue-500', 'ring-opacity-50');
+                    card.classList.remove('ring-4', 'ring-blue-500', 'ring-opacity-50', 'bg-green-50', 'border-green-400', 'shadow-lg');
                     const members = card.querySelector('.bungalow-members');
+                    const checkIcon = card.querySelector('.check-icon');
                     if (members) {
                         members.classList.add('hidden');
+                    }
+                    if (checkIcon) {
+                        checkIcon.classList.add('hidden');
                     }
                 });
 
                 // Sélectionner le nouveau bungalow
                 const selectedCard = document.querySelector(`[data-bungalow="${bungalowNumber}"]`);
-                selectedCard.classList.add('ring-4', 'ring-blue-500', 'ring-opacity-50');
+                selectedCard.classList.add('ring-4', 'ring-blue-500', 'ring-opacity-50', 'bg-green-50', 'border-green-400', 'shadow-lg');
+                
+                // Afficher l'icône de validation
+                const checkIcon = selectedCard.querySelector('.check-icon');
+                if (checkIcon) {
+                    checkIcon.classList.remove('hidden');
+                }
                 
                 // Afficher/masquer les membres
                 const members = selectedCard.querySelector('.bungalow-members');
