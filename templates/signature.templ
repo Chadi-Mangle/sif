@@ -1,0 +1,312 @@
+package templates
+
+templ Signature(firstName, lastName string, bungalowNumber int) {
+    @layout("Signature du Contrat - SIF") {
+
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="w-full h-full bg-gradient-to-r from-blue-50/30 to-indigo-50/30"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="relative bg-white/95 backdrop-blur-md shadow-lg border-b border-white/30">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center">
+                        <div class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl mr-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900 mb-1">Signature du Contrat</h1>
+                            <p class="text-sm text-gray-600">Contrat de responsabilité du bungalow</p>
+                        </div>
+                    </div>
+                    <a href="/dashboard" class="group relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:bg-white hover:border-blue-300 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Retour au profil
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Contract Section -->
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-white/30">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl mb-4 shadow-lg">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                        Contrat de Responsabilité
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                        Veuillez lire attentivement le contrat ci-dessous et le signer électroniquement
+                    </p>
+                </div>
+
+                <!-- Contract Text -->
+                <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 border border-gray-200 mb-6">
+                    <div class="prose prose-lg max-w-none">
+                        <p class="text-gray-800 leading-relaxed mb-4">
+                            Je soussigné(e) <strong class="text-blue-600">{ firstName } { lastName }</strong>, désigné(e) comme responsable du bungalow n°<strong class="text-blue-600">{ bungalowNumber }</strong>,
+                        </p>
+                        <p class="text-gray-800 leading-relaxed mb-4">
+                            reconnais que <strong class="text-indigo-600">Mangle Chadi</strong> a versé une caution globale de <strong class="text-red-600">2500€</strong> auprès du camping.
+                        </p>
+                        <p class="text-gray-800 leading-relaxed mb-4">
+                            Je reconnais que la part de caution correspondant au bungalow n°<strong class="text-blue-600">{ bungalowNumber }</strong> est fixée à <strong class="text-red-600">250 €</strong>.
+                        </p>
+                        <p class="text-gray-800 leading-relaxed">
+                            En conséquence, je m'engage à rembourser à <strong class="text-indigo-600">Mangle Chadi</strong> toute retenue opérée par le camping sur la caution globale, dans la limite de <strong class="text-red-600">250€</strong>, si cette retenue concerne le bungalow dont j'ai la responsabilité.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Signature Form -->
+                <form class="space-y-6">
+                    <!-- Agreement Checkboxes -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Acceptation et Signature</h3>
+                        
+                        <!-- Read and Understand -->
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-4 border border-green-100">
+                            <label class="flex items-start cursor-pointer">
+                                <input type="checkbox" name="read_contract" id="read-contract" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded mt-1 transition-all duration-200" required>
+                                <div class="ml-3">
+                                    <span class="text-sm font-semibold text-gray-900">J'ai lu et compris le contrat</span>
+                                    <p class="text-xs text-gray-600 mt-1">Je confirme avoir lu et compris l'ensemble des termes du contrat de responsabilité</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Accept Terms -->
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-4 border border-blue-100">
+                            <label class="flex items-start cursor-pointer">
+                                <input type="checkbox" name="accept_terms" id="accept-terms" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1 transition-all duration-200" required>
+                                <div class="ml-3">
+                                    <span class="text-sm font-semibold text-gray-900">J'accepte les termes du contrat</span>
+                                    <p class="text-xs text-gray-600 mt-1">J'accepte de me conformer aux obligations énoncées dans ce contrat</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Electronic Signature -->
+                        <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-lg p-4 border border-purple-100">
+                            <label class="flex items-start cursor-pointer">
+                                <input type="checkbox" name="electronic_signature" id="electronic-signature" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded mt-1 transition-all duration-200" required>
+                                <div class="ml-3">
+                                    <span class="text-sm font-semibold text-gray-900">Signature électronique</span>
+                                    <p class="text-xs text-gray-600 mt-1">Je reconnais que cette signature électronique a la même valeur légale qu'une signature manuscrite</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Data Processing -->
+                        <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-lg p-4 border border-orange-100">
+                            <label class="flex items-start cursor-pointer">
+                                <input type="checkbox" name="data_processing" id="data-processing" class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded mt-1 transition-all duration-200" required>
+                                <div class="ml-3">
+                                    <span class="text-sm font-semibold text-gray-900">Traitement des données</span>
+                                    <p class="text-xs text-gray-600 mt-1">J'accepte que mes données personnelles soient traitées dans le cadre de ce contrat</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Signature Canvas -->
+                    <div class="bg-gradient-to-br from-gray-50 to-slate-50 rounded-lg p-6 border border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Signature manuscrite</h4>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-white">
+                            <canvas id="signature-canvas" width="600" height="150" class="w-full border border-gray-200 rounded cursor-crosshair"></canvas>
+                            <div class="flex justify-between items-center mt-3">
+                                <button type="button" id="clear-signature" class="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                                    Effacer la signature
+                                </button>
+                                <span class="text-xs text-gray-400">Signez dans la zone ci-dessus</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                        <button type="button" id="save-draft" class="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                            <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3-3m0 0l-3 3m3-3v12"></path>
+                            </svg>
+                            Sauvegarder le brouillon
+                        </button>
+                        <button type="submit" id="submit-contract" class="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Signer et valider le contrat
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        @Footer()
+    </div>
+
+    <!-- JavaScript pour la signature et la validation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('signature-canvas');
+            const ctx = canvas.getContext('2d');
+            const clearBtn = document.getElementById('clear-signature');
+            const submitBtn = document.getElementById('submit-contract');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            let isDrawing = false;
+            let hasSignature = false;
+            
+            // Configuration du canvas
+            ctx.strokeStyle = '#1f2937';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            // Fonction pour vérifier si tous les champs sont remplis
+            function checkFormValidity() {
+                const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                const canSubmit = allChecked && hasSignature;
+                submitBtn.disabled = !canSubmit;
+                
+                if (canSubmit) {
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                } else {
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+                
+                return canSubmit;
+            }
+            
+            // Événements de dessin sur le canvas
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // Événements tactiles pour mobile
+            canvas.addEventListener('touchstart', handleTouch);
+            canvas.addEventListener('touchmove', handleTouch);
+            canvas.addEventListener('touchend', stopDrawing);
+            
+            function startDrawing(e) {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                hasSignature = true;
+                checkFormValidity();
+            }
+            
+            function stopDrawing() {
+                isDrawing = false;
+                ctx.beginPath();
+            }
+            
+            function handleTouch(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
+                                                e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            }
+            
+            // Effacer la signature
+            clearBtn.addEventListener('click', function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                hasSignature = false;
+                checkFormValidity();
+            });
+            
+            // Écouter les changements des checkboxes
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', checkFormValidity);
+            });
+            
+            // Soumission du formulaire
+            submitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Bouton cliqué');
+                console.log('hasSignature:', hasSignature);
+                console.log('checkboxes checked:', Array.from(checkboxes).map(cb => cb.checked));
+                
+                if (checkFormValidity()) {
+                    console.log('Formulaire valide, traitement...');
+                    // Animation de validation
+                    submitBtn.innerHTML = `
+                        <svg class="w-4 h-4 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Validation en cours...
+                    `;
+                    submitBtn.disabled = true;
+                    
+                    // Simulation d'un délai de traitement
+                    setTimeout(() => {
+                        // Capturer la signature avant le téléchargement
+                        const canvas = document.getElementById('signature-canvas');
+                        if (canvas) {
+                            captureSignature(canvas);
+                        }
+                        
+                        // Téléchargement automatique du contrat
+                        const preferences = {
+                            vegetarian: false,
+                            has_license: true,
+                            has_vehicle: false,
+                            halal_meat: false,
+                            wants_to_drive: true,
+                            has_pathologies: false
+                        };
+                        
+                        // Utilisation de valeurs statiques pour le test
+                        downloadContract('Jean', 'Dupont', 'jean.dupont@example.com', 42, 'pending', 'none', preferences);
+                        
+                        alert('Contrat signé avec succès ! Le contrat a été téléchargé automatiquement. Redirection vers la page de paiement...');
+                        window.location.href = '/payment';
+                    }, 1500);
+                } else {
+                    console.log('Formulaire invalide');
+                    alert('Veuillez remplir tous les champs obligatoires et signer le contrat.');
+                }
+            });
+            
+            // Sauvegarder le brouillon
+            document.getElementById('save-draft').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Brouillon sauvegardé !');
+            });
+            
+            // Initialiser l'état du formulaire
+            checkFormValidity();
+        });
+    </script>
+    }
+}

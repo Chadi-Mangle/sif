@@ -10,6 +10,7 @@ templ layout(title string) {
         <meta name="description" content="Système de réservation de bungalows SIF - Réservez votre séjour dans un cadre exceptionnel">
         <script src="https://cdn.jsdelivr.net/npm/unpoly@3.11.0/unpoly.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/unpoly@3.11.0/unpoly.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <link rel="stylesheet" href="/assets/dist/style.css" />
         <link rel="stylesheet" href="/assets/dist/unpoly-change.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +29,165 @@ templ layout(title string) {
             
             { children... }
         </div>
+
+        <!-- JavaScript global -->
+        <script>
+            // Variable globale pour stocker la signature
+            let capturedSignature = null;
+
+            function captureSignature(canvas) {
+                if (canvas) {
+                    capturedSignature = canvas.toDataURL('image/png');
+                }
+            }
+
+            function downloadContract(firstName, lastName, email, bungalowNumber, paymentStatus, paymentMethod, preferences) {
+                // Vérifier si jsPDF est disponible
+                if (typeof window.jsPDF === 'undefined') {
+                    alert('Erreur: Bibliothèque PDF non chargée. Veuillez recharger la page.');
+                    return;
+                }
+
+                const { jsPDF } = window.jsPDF;
+                const doc = new jsPDF();
+
+                // Configuration des couleurs
+                const primaryColor = [59, 130, 246]; // Blue-500
+                const secondaryColor = [99, 102, 241]; // Indigo-500
+                const textColor = [31, 41, 55]; // Gray-800
+
+                // En-tête du document
+                doc.setFillColor(...primaryColor);
+                doc.rect(0, 0, 210, 30, 'F');
+                
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(20);
+                doc.setFont('helvetica', 'bold');
+                doc.text('CONTRAT DE RESPONSABILITÉ SIF 2025', 105, 20, { align: 'center' });
+
+                // Informations du contrat
+                let yPosition = 50;
+                doc.setTextColor(...textColor);
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+
+                // Informations personnelles
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.text('INFORMATIONS PERSONNELLES', 20, yPosition);
+                yPosition += 10;
+
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.text(`Nom: ${lastName}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`Prénom: ${firstName}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`Email: ${email}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`Bungalow n°: ${bungalowNumber}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`Statut de paiement: ${paymentStatus}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`Méthode de paiement: ${paymentMethod}`, 20, yPosition);
+                yPosition += 15;
+
+                // Préférences
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.text('PRÉFÉRENCES', 20, yPosition);
+                yPosition += 10;
+
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.text(`• Végétarien: ${preferences.vegetarian ? 'Oui' : 'Non'}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`• Permis de conduire: ${preferences.has_license ? 'Oui' : 'Non'}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`• Véhiculé: ${preferences.has_vehicle ? 'Oui' : 'Non'}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`• Viande halal: ${preferences.halal_meat ? 'Oui' : 'Non'}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`• Souhaite conduire: ${preferences.wants_to_drive ? 'Oui' : 'Non'}`, 20, yPosition);
+                yPosition += 7;
+                doc.text(`• Pathologies connues: ${preferences.has_pathologies ? 'Oui' : 'Non'}`, 20, yPosition);
+                yPosition += 20;
+
+                // Contenu du contrat
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.text('CONTRAT DE RESPONSABILITÉ', 20, yPosition);
+                yPosition += 15;
+
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                const contractText = `Je soussigné(e) ${firstName} ${lastName}, désigné(e) comme responsable du bungalow n°${bungalowNumber}, reconnais que Mangle Chadi a versé une caution globale de 2500€ auprès du camping.
+
+Je reconnais que la part de caution correspondant au bungalow n°${bungalowNumber} est fixée à 250 €.
+
+En conséquence, je m'engage à rembourser à Mangle Chadi toute retenue opérée par le camping sur la caution globale, dans la limite de 250€, si cette retenue concerne le bungalow dont j'ai la responsabilité.
+
+Je déclare avoir pris connaissance des conditions générales et accepter sans réserve les termes du présent contrat.`;
+
+                // Diviser le texte en lignes pour éviter le débordement
+                const lines = doc.splitTextToSize(contractText, 170);
+                doc.text(lines, 20, yPosition);
+                yPosition += lines.length * 5 + 20;
+
+                // Zone de signature
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(12);
+                doc.text('SIGNATURE MANUSCRITE:', 20, yPosition);
+                yPosition += 10;
+
+                // Rectangle pour la signature
+                doc.setDrawColor(...primaryColor);
+                doc.setLineWidth(1);
+                doc.rect(20, yPosition, 170, 30);
+                
+                // Ajouter la vraie signature si disponible
+                if (capturedSignature) {
+                    try {
+                        doc.addImage(capturedSignature, 'PNG', 25, yPosition + 5, 160, 20);
+                    } catch (error) {
+                        console.log('Erreur lors de l\'ajout de la signature:', error);
+                        // Fallback vers le texte
+                        doc.setFont('helvetica', 'italic');
+                        doc.setFontSize(10);
+                        doc.setTextColor(100, 100, 100);
+                        doc.text('Signature manuscrite capturée le ' + new Date().toLocaleDateString('fr-FR'), 25, yPosition + 20);
+                    }
+                } else {
+                    // Texte de signature simulée
+                    doc.setFont('helvetica', 'italic');
+                    doc.setFontSize(10);
+                    doc.setTextColor(100, 100, 100);
+                    doc.text('Signature manuscrite capturée le ' + new Date().toLocaleDateString('fr-FR'), 25, yPosition + 20);
+                }
+
+                // Date et lieu
+                yPosition += 50;
+                doc.setTextColor(...textColor);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.text(`Fait le: ${new Date().toLocaleDateString('fr-FR')}`, 20, yPosition);
+                doc.text('Lieu: Campus SIF', 20, yPosition + 10);
+
+                // Pied de page
+                doc.setFillColor(...secondaryColor);
+                doc.rect(0, 280, 210, 20, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(10);
+                doc.text('SIF - Système de Réservation de Bungalows', 105, 290, { align: 'center' });
+                doc.text('Développé avec ❤️ par le BDE FISA', 105, 295, { align: 'center' });
+
+                // Téléchargement du PDF
+                const fileName = `Contrat_SIF_${firstName}_${lastName}_Bungalow_${bungalowNumber}.pdf`;
+                doc.save(fileName);
+                
+                alert('Contrat PDF téléchargé avec succès !');
+            }
+        </script>
     </body>
     </html>
 }

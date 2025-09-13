@@ -1,0 +1,131 @@
+package templates
+
+templ Terms() {
+    @layout("Conditions d'utilisation - SIF") {
+
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="w-full h-full bg-gradient-to-r from-blue-50/30 to-indigo-50/30"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="relative bg-white/95 backdrop-blur-md shadow-lg border-b border-white/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center">
+                        <div class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl mr-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900 mb-1">Conditions d'utilisation</h1>
+                            <p class="text-sm text-gray-600">Dernière mise à jour : 13 septembre 2025</p>
+                        </div>
+                    </div>
+                    <a href="/" class="group relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:bg-white hover:border-blue-300 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-white/30">
+                <div class="prose prose-lg max-w-none">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">1. Acceptation des conditions</h2>
+                    <p class="text-gray-700 mb-6">
+                        En accédant et en utilisant le Système de Réservation du SIF (ci-après "le Service"), vous acceptez d'être lié par ces conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le Service.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">2. Description du service</h2>
+                    <p class="text-gray-700 mb-6">
+                        Le Service permet aux utilisateurs de réserver des bungalows pour l'événement du SIF organisé par le BDE FISA 2025/2026. Le Service inclut la gestion des profils utilisateurs, les réservations, les paiements et la communication entre les utilisateurs et l'organisation.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">3. Inscription et compte utilisateur</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">3.1. Pour utiliser le Service, vous devez créer un compte en fournissant des informations exactes et complètes.</p>
+                        <p class="text-gray-700">3.2. Vous êtes responsable de la confidentialité de votre compte et de votre mot de passe.</p>
+                        <p class="text-gray-700">3.3. Vous devez notifier immédiatement toute utilisation non autorisée de votre compte.</p>
+                        <p class="text-gray-700">3.4. Vous devez maintenir à jour vos informations personnelles.</p>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">4. Réservations et paiements</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">4.1. Les réservations sont soumises à disponibilité et peuvent être refusées à notre discrétion.</p>
+                        <p class="text-gray-700">4.2. Le paiement des frais d'inscription (80€ TTC) est obligatoire pour confirmer une réservation.</p>
+                        <p class="text-gray-700">4.3. Les paiements sont traités de manière sécurisée via Stripe et PayPal.</p>
+                        <p class="text-gray-700">4.4. Aucun remboursement ne sera accordé après confirmation de la réservation, sauf cas de force majeure.</p>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">5. Responsabilités de l'utilisateur</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">5.1. Vous vous engagez à fournir des informations exactes et à jour.</p>
+                        <p class="text-gray-700">5.2. Vous vous engagez à respecter les règles de conduite et les valeurs du BDE FISA 2025/2026.</p>
+                        <p class="text-gray-700">5.3. Vous êtes responsable de vos biens personnels et de leur sécurité pendant l'événement.</p>
+                        <p class="text-gray-700">5.4. Vous vous engagez à signaler toute pathologie ou condition médicale pertinente.</p>
+                        <p class="text-gray-700">5.5. Vous vous engagez à respecter les consignes de sécurité et les règles du camping.</p>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">6. Contrat de responsabilité</h2>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
+                        <p class="text-gray-700 font-medium mb-4">
+                            En signant le contrat de responsabilité, vous reconnaissez que :
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Mangle Chadi a versé une caution globale de 2500€ auprès du camping</li>
+                            <li>Votre part de caution correspondant à votre bungalow est fixée à 250€</li>
+                            <li>Vous vous engagez à rembourser toute retenue opérée par le camping sur la caution globale, dans la limite de 250€</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">7. Limitation de responsabilité</h2>
+                    <p class="text-gray-700 mb-6">
+                        Le BDE FISA 2025/2026 ne saurait être tenu responsable des dommages indirects, des pertes de profits, des pertes de données ou de tout autre dommage résultant de l'utilisation du Service ou de la participation à l'événement. Notre responsabilité est limitée au montant des frais d'inscription payés.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">8. Protection des données</h2>
+                    <p class="text-gray-700 mb-6">
+                        Le traitement de vos données personnelles est régi par notre Politique de confidentialité, qui fait partie intégrante de ces conditions d'utilisation. En utilisant le Service, vous consentez au traitement de vos données conformément à cette politique.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">9. Modification des conditions</h2>
+                    <p class="text-gray-700 mb-6">
+                        Nous nous réservons le droit de modifier ces conditions d'utilisation à tout moment. Les modifications prendront effet dès leur publication sur le Service. Votre utilisation continue du Service constitue votre acceptation des conditions modifiées.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">10. Résiliation</h2>
+                    <p class="text-gray-700 mb-6">
+                        Nous nous réservons le droit de suspendre ou de résilier votre accès au Service à tout moment, sans préavis, en cas de violation de ces conditions d'utilisation.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">11. Droit applicable</h2>
+                    <p class="text-gray-700 mb-6">
+                        Ces conditions d'utilisation sont régies par le droit français. Tout litige sera soumis à la compétence exclusive des tribunaux français.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">12. Contact</h2>
+                    <p class="text-gray-700 mb-6">
+                        Pour toute question concernant ces conditions d'utilisation ou l'événement du SIF, vous pouvez contacter le président du BDE FISA 2025/2026, Lucas Dréano, à l'adresse email : lucas.dreano@bde-fisa.fr
+                    </p>
+
+                    <div class="bg-gray-50 rounded-lg p-6 mt-8">
+                        <p class="text-sm text-gray-600 text-center">
+                            En utilisant le Service, vous confirmez avoir lu, compris et accepté ces conditions d'utilisation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        @Footer()
+    </div>
+    }
+}

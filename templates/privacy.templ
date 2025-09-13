@@ -1,0 +1,181 @@
+package templates
+
+templ Privacy() {
+    @layout("Politique de confidentialité - SIF") {
+
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="w-full h-full bg-gradient-to-r from-blue-50/30 to-indigo-50/30"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="relative bg-white/95 backdrop-blur-md shadow-lg border-b border-white/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center">
+                        <div class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl mr-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900 mb-1">Politique de confidentialité</h1>
+                            <p class="text-sm text-gray-600">Dernière mise à jour : 13 septembre 2025</p>
+                        </div>
+                    </div>
+                    <a href="/" class="group relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:bg-white hover:border-blue-300 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-white/30">
+                <div class="prose prose-lg max-w-none">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">1. Introduction</h2>
+                    <p class="text-gray-700 mb-6">
+                        Le Système de Réservation du SIF organisé par le BDE FISA 2025/2026 (ci-après "nous", "notre" ou "le Service") s'engage à protéger votre vie privée et vos données personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons vos informations personnelles conformément au Règlement Général sur la Protection des Données (RGPD).
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">2. Données collectées</h2>
+                    <div class="space-y-4 mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900">2.1. Informations personnelles</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Nom et prénom</li>
+                            <li>Adresse email</li>
+                            <li>Numéro de téléphone (optionnel)</li>
+                            <li>Informations de paiement (traitées par nos prestataires sécurisés)</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-gray-900">2.2. Préférences et informations spécifiques</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Préférences alimentaires (végétarien, viande halal)</li>
+                            <li>Informations de conduite (permis, véhicule, souhait de conduire)</li>
+                            <li>Informations médicales (pathologies connues)</li>
+                            <li>Numéro de bungalow assigné</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-gray-900">2.3. Données techniques</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Adresse IP</li>
+                            <li>Type de navigateur et version</li>
+                            <li>Pages visitées et durée de visite</li>
+                            <li>Cookies et technologies similaires</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">3. Finalités du traitement</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">Nous utilisons vos données personnelles pour :</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Gérer votre compte utilisateur et vos réservations</li>
+                            <li>Traiter les paiements et gérer la facturation</li>
+                            <li>Vous assigner un bungalow approprié selon vos préférences</li>
+                            <li>Communiquer avec vous concernant votre réservation</li>
+                            <li>Améliorer nos services et développer de nouvelles fonctionnalités</li>
+                            <li>Respecter nos obligations légales et réglementaires</li>
+                            <li>Assurer la sécurité de notre plateforme</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">4. Base légale du traitement</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">Le traitement de vos données personnelles est basé sur :</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Exécution du contrat :</strong> Pour la gestion de votre réservation et de votre compte</li>
+                            <li><strong>Intérêt légitime :</strong> Pour améliorer nos services et assurer la sécurité</li>
+                            <li><strong>Consentement :</strong> Pour les communications marketing (si applicable)</li>
+                            <li><strong>Obligation légale :</strong> Pour respecter les réglementations applicables</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">5. Partage des données</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">Nous ne vendons jamais vos données personnelles. Nous pouvons partager vos informations avec :</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Prestataires de paiement :</strong> Stripe et PayPal pour le traitement des paiements</li>
+                            <li><strong>Prestataires techniques :</strong> Pour l'hébergement et la maintenance de notre plateforme</li>
+                            <li><strong>Autorités compétentes :</strong> Si requis par la loi ou pour protéger nos droits</li>
+                            <li><strong>BDE FISA 2025/2026 :</strong> Informations nécessaires pour la gestion de l'événement du SIF</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">6. Sécurité des données</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">Nous mettons en place des mesures de sécurité appropriées pour protéger vos données :</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Chiffrement des données en transit et au repos</li>
+                            <li>Accès restreint aux données personnelles</li>
+                            <li>Surveillance continue de la sécurité</li>
+                            <li>Formation du personnel sur la protection des données</li>
+                            <li>Sauvegardes régulières et sécurisées</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">7. Conservation des données</h2>
+                    <p class="text-gray-700 mb-6">
+                        Nous conservons vos données personnelles aussi longtemps que nécessaire pour les finalités décrites dans cette politique, ou conformément aux obligations légales. Les données de compte sont conservées pendant la durée de votre inscription plus 3 ans. Les données de paiement sont conservées conformément aux réglementations applicables.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">8. Vos droits</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">Conformément au RGPD, vous disposez des droits suivants :</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Droit d'accès :</strong> Obtenir une copie de vos données personnelles</li>
+                            <li><strong>Droit de rectification :</strong> Corriger des données inexactes ou incomplètes</li>
+                            <li><strong>Droit à l'effacement :</strong> Demander la suppression de vos données</li>
+                            <li><strong>Droit à la limitation :</strong> Restreindre le traitement de vos données</li>
+                            <li><strong>Droit à la portabilité :</strong> Récupérer vos données dans un format structuré</li>
+                            <li><strong>Droit d'opposition :</strong> Vous opposer au traitement de vos données</li>
+                            <li><strong>Droits relatifs à la décision automatisée :</strong> Ne pas faire l'objet d'une décision basée uniquement sur un traitement automatisé</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">9. Cookies</h2>
+                    <p class="text-gray-700 mb-6">
+                        Notre site utilise des cookies pour améliorer votre expérience utilisateur, analyser le trafic et personnaliser le contenu. Vous pouvez gérer vos préférences de cookies dans les paramètres de votre navigateur. Certains cookies sont essentiels au fonctionnement du site.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">10. Transferts internationaux</h2>
+                    <p class="text-gray-700 mb-6">
+                        Vos données peuvent être transférées vers des pays situés en dehors de l'Espace économique européen. Dans ce cas, nous nous assurons que des garanties appropriées sont en place, notamment des clauses contractuelles types approuvées par la Commission européenne.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">11. Modifications de cette politique</h2>
+                    <p class="text-gray-700 mb-6">
+                        Nous pouvons modifier cette politique de confidentialité à tout moment. Les modifications importantes vous seront notifiées par email ou via une notification sur notre site. Nous vous encourageons à consulter régulièrement cette page.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">12. Contact et réclamations</h2>
+                    <div class="space-y-4 mb-6">
+                        <p class="text-gray-700">Pour exercer vos droits ou pour toute question concernant cette politique, contactez le président du BDE FISA 2025/2026 :</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Président du BDE :</strong> Lucas Dréano</li>
+                            <li><strong>Email :</strong> lucas.dreano@bde-fisa.fr</li>
+                            <li><strong>Organisation :</strong> BDE FISA 2025/2026</li>
+                        </ul>
+                        <p class="text-gray-700">
+                            Vous avez également le droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) si vous estimez que vos droits ne sont pas respectés.
+                        </p>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-8">
+                        <p class="text-sm text-gray-700">
+                            <strong>Note importante :</strong> Cette politique de confidentialité est conforme au RGPD et aux réglementations françaises en vigueur. En utilisant notre Service, vous confirmez avoir lu et accepté cette politique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        @Footer()
+    </div>
+    }
+}

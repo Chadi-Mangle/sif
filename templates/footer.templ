@@ -1,0 +1,66 @@
+package templates
+
+templ Footer() {
+    <footer class="bg-gray-100 text-black mt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <!-- Contenu principal du footer -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Logo et description -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center mr-4">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-black">SIF</h3>
+                    </div>
+                    <p class="text-gray-700 mb-6 max-w-md leading-relaxed">
+                        Système de Réservation du SIF - Gérez facilement vos réservations de bungalows 
+                        et organisez vos événements en toute simplicité.
+                    </p>
+                </div>
+
+                <!-- Liens rapides -->
+                <div>
+                    <h4 class="text-lg font-semibold text-black mb-4">Liens rapides</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Accueil</a></li>
+                        <li><a href="/profile" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Mon Profil</a></li>
+                        <li><a href="/login" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Connexion</a></li>
+                        <li><a href="/register" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Inscription</a></li>
+                        <li><a href="/payment" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Paiement</a></li>
+                    </ul>
+                </div>
+
+                <!-- Informations -->
+                <div class="text-center md:text-left">
+                    <h4 class="text-lg font-semibold text-black mb-4">Informations</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/about" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">À propos</a></li>
+                        <li><a href="/contact" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Contact</a></li>
+                        <li><a href="/faq" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">FAQ</a></li>
+                        <li><a href="/terms" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Conditions d'utilisation</a></li>
+                        <li><a href="/privacy" class="text-gray-700 hover:text-black transition-colors duration-200 text-sm">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ligne de séparation et copyright -->
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-gray-600 text-sm text-center md:text-left">
+                        © 2025 SIF - Système de Réservation du SIF. Tous droits réservés.
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-600">
+                        <span>Développé avec ❤️ par le BDE FISA</span>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span>Système en ligne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+}

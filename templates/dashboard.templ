@@ -2,6 +2,7 @@ package templates
 
 templ Dashboard(firstName, lastName string, isAdmin bool) {
     @layout("Mon Profil - SIF") {
+
     <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-30">
@@ -13,25 +14,30 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center py-4">
                     <div class="flex items-center">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl blur-sm opacity-75"></div>
-                            <div class="relative inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl mr-4 shadow-lg">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                </svg>
-                            </div>
+                        <div class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl mr-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
                         </div>
                         <div>
                             <h1 class="text-2xl font-bold text-gray-900 mb-1">Mon Profil SIF</h1>
                             <p class="text-sm text-gray-600">Gérez vos informations personnelles et préférences</p>
                         </div>
                     </div>
-                    <a href="/" class="group relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:bg-white hover:border-blue-300 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
-                        <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                        </svg>
-                        Retour à l'accueil
-                    </a>
+                    <div class="flex space-x-3">
+                        <a href="/profile" class="group relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:bg-white hover:border-blue-300 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            Mon Profil
+                        </a>
+                        <a href="/" class="group relative inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:bg-white hover:border-blue-300 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Retour à l'accueil
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
@@ -72,13 +78,10 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                         <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl"></div>
                         <div class="relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-blue-100">
                             <div class="flex items-center mb-4">
-                                <div class="relative">
-                                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg blur-sm opacity-75"></div>
-                                    <div class="relative w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-3 shadow-md">
-                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                        </svg>
-                                    </div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                    </svg>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-900 mb-1">Informations personnelles</h3>
@@ -136,13 +139,10 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                         <div class="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl"></div>
                         <div class="relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-green-100">
                             <div class="flex items-center mb-4">
-                                <div class="relative">
-                                    <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg blur-sm opacity-75"></div>
-                                    <div class="relative w-8 h-8 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mr-3 shadow-md">
-                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-900 mb-1">Préférences et informations</h3>
@@ -188,6 +188,28 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                                 </div>
                             </div>
 
+                            <!-- Section Conduite (apparaît seulement si permis coché) -->
+                            <div class="mt-4 transition-all duration-300 ease-in-out" id="driving-section" style="display: none;">
+                                <div class="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-4 border border-indigo-100">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center mr-2">
+                                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1m-1-1v-4a1 1 0 00-1-1H9m4 1v4"></path>
+                                            </svg>
+                                        </div>
+                                        <h4 class="text-sm font-bold text-gray-900">Préférences de conduite</h4>
+                                    </div>
+                                    <div class="group bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-3 border border-indigo-100 hover:border-indigo-200 transition-all duration-200 hover:shadow-md">
+                                        <label class="flex items-center cursor-pointer">
+                                            <input type="checkbox" name="wants_to_drive" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded transition-all duration-200">
+                                            <span class="ml-3 text-sm font-semibold text-gray-900">Je souhaite conduire</span>
+                                        </label>
+                                        <p class="text-xs text-gray-600 mt-1 ml-7">Je souhaite être désigné(e) comme conducteur(trice) pour les déplacements</p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Pathologies -->
                             <div class="mt-6">
                                 <div class="bg-gradient-to-br from-red-50 to-rose-50 rounded-lg p-4 border border-red-100">
@@ -218,7 +240,7 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                     <!-- Submit Button -->
                     <div class="flex justify-center pt-4">
                         <a 
-                            href="/payment"
+                            href="/signature"
                             class="group relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
                         >
                             <svg class="w-4 h-4 mr-2 group-hover:scale-105 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -232,20 +254,16 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
         </main>
 
         <!-- Footer -->
-        <footer class="relative mt-8 pt-4 border-t border-gray-200">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <p class="text-gray-500 text-xs">
-                    © 2025 SIF - Système de Réservation du SIF. Tous droits réservés.
-                </p>
-            </div>
-        </footer>
+        @Footer()
     </div>
 
-    <!-- JavaScript pour la fonctionnalité des pathologies -->
+    <!-- JavaScript pour la fonctionnalité des pathologies et de la conduite -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const pathologiesCheckbox = document.getElementById('pathologies-checkbox');
             const pathologiesDetails = document.getElementById('pathologies-details');
+            const licenseCheckbox = document.querySelector('input[name="has_license"]');
+            const drivingSection = document.getElementById('driving-section');
             
             // Fonction pour gérer l'affichage du champ pathologies
             function togglePathologiesDetails() {
@@ -270,11 +288,36 @@ templ Dashboard(firstName, lastName string, isAdmin bool) {
                 }
             }
             
-            // Écouter les changements de la checkbox
+            // Fonction pour gérer l'affichage de la section conduite
+            function toggleDrivingSection() {
+                if (licenseCheckbox.checked) {
+                    drivingSection.style.display = 'block';
+                    drivingSection.style.opacity = '0';
+                    drivingSection.style.transform = 'translateY(-10px)';
+                    
+                    // Animation d'apparition
+                    setTimeout(() => {
+                        drivingSection.style.opacity = '1';
+                        drivingSection.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    // Animation de disparition
+                    drivingSection.style.opacity = '0';
+                    drivingSection.style.transform = 'translateY(-10px)';
+                    
+                    setTimeout(() => {
+                        drivingSection.style.display = 'none';
+                    }, 300);
+                }
+            }
+            
+            // Écouter les changements des checkboxes
             pathologiesCheckbox.addEventListener('change', togglePathologiesDetails);
+            licenseCheckbox.addEventListener('change', toggleDrivingSection);
             
             // Initialiser l'état au chargement
             togglePathologiesDetails();
+            toggleDrivingSection();
         });
     </script>
     }

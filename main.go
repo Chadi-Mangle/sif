@@ -76,6 +76,58 @@ func main() {
 		templ.Handler(component).ServeHTTP(w, r)
 	})
 
+	// Route pour la page de signature
+	http.HandleFunc("GET /signature", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.Signature("John", "Doe", 42)
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	// Route pour la page de profil
+	http.HandleFunc("GET /profile", func(w http.ResponseWriter, r *http.Request) {
+		// Récupérer les paramètres de l'URL
+		paymentMethod := r.URL.Query().Get("payment")
+		paymentStatus := r.URL.Query().Get("status")
+		
+		// Données de préférences simulées
+		preferences := map[string]bool{
+			"vegetarian":      true,
+			"has_license":     true,
+			"has_vehicle":     false,
+			"halal_meat":      false,
+			"wants_to_drive":  true,
+			"has_pathologies": false,
+		}
+		
+		component := templates.Profile("John", "Doe", false, "john.doe@example.com", paymentMethod, paymentStatus, 42, preferences)
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	// Routes pour les pages d'information
+	http.HandleFunc("GET /about", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.About()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	http.HandleFunc("GET /contact", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.Contact()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	http.HandleFunc("GET /faq", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.FAQ()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	http.HandleFunc("GET /terms", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.Terms()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
+	http.HandleFunc("GET /privacy", func(w http.ResponseWriter, r *http.Request) {
+		component := templates.Privacy()
+		templ.Handler(component).ServeHTTP(w, r)
+	})
+
 	serverAddr := cfg.GetServerAddress()
 	fmt.Printf("Listening on %s\n", serverAddr)
 	http.ListenAndServe(":"+cfg.Server.Port, nil)
